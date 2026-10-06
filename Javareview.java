@@ -3,6 +3,7 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.List;
 /**
  *
  * @author khuff
@@ -257,15 +258,96 @@ public static int Divide(int a,int b)
 //{
 //    System.out.println(course.title +"--"+course.code);
 //}
-        
 
 
+////
+///
+///
+///
+////////Day2////////
+///
+///
+///
+///
+/////////////////////////////class with constructor and encapsulation
+//Person p1 = new Person();
+//p1.setAge(10);
+//p1.setName("mohammad");
+//            System.out.println(p1.getAge());
+//            System.out.println(p1.getName());
+//            
+//Person p2 =  new Person(20,"ahmad");
+////            System.out.println(p2.getage());
+////            System.out.println(p2.getname());
+//System.out.println(p2);
 
+///
+///
+///
+///////////////////////////////////abstract class  and polymorphisem
+///
+///
+///
 
+//Shape s1= new Circle(5);
+//
+//Shape s2= new Rectangle(4,5);
+//Shape s3= new Triangle(3,4);
+////System.out.println(s1.area());
+////System.out.println(s2.area());
+////System.out.println(s3.area());
+////s1.printArea(s1);
+////s2.printArea(s2);
+////s3.printArea(s3);
+//Shape.printArea(s1);
+//Shape.printArea(s2);
+//Shape.printArea(s3);
+//if (s1 instanceof Circle)
+//{
+//    Circle c1=(Circle) s1;
+//    System.out.println(c1.getRadius());
+//}
+//
+//if (s2 instanceof Rectangle)
+//{
+//    Rectangle r1=(Rectangle) s2;
+//    System.out.println(r1.getHeight());
+//    System.out.println(r1.getWeidth());
+//}
+//
+//if (s3 instanceof Triangle)
+//{
+//    Triangle t1=(Triangle)s3;
+//    System.out.println(t1.getBase());
+//    System.out.println(t1.getHeight());
+//}
+///
+///
+///
+//////////////////////////list and shape
+///
+///
+//List<Shape>shape= new ArrayList();
+//shape.add(new Circle(5));
+//shape.add(new Triangle(5,3));
+//shape.add(new Rectangle(2,3));
+//for(Shape shapes :shape)
+//{
+//    System.out.println(shapes.area());
+//}
+//////////////////mini project
+///
+///
+///
+Student s1 = new Student(1, 90, 22, "Mohammad");
 
+Course c1 = new Course();
+c1.title = "Java";
+c1.code = "JAVA101";
 
-
-
+s1.enroll(c1);
+Person p1=s1;
+p1.printDetails();
 
     }
 }

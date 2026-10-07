@@ -4,6 +4,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
+import java.util.LinkedList;
+import java.util.Stack;
+import java.util.Deque;
+import java.util.ArrayDeque;
+import static java.util.Collections.list;
+import java.util.HashSet;
+import java.util.Queue;
+import java.util.TreeMap;
 /**
  *
  * @author khuff
@@ -49,6 +57,52 @@ public static int Divide(int a,int b)
     }
     return a/b;
 }
+
+
+/////////////method to soreted hash in list 
+public  static void printSorted(HashMap<String,List<String>>student)
+{
+    List<Map.Entry<String,List<String>>> sorted= new ArrayList<>(student.entrySet());// stroed in ArrayList to make all Entry with index
+sorted.sort((s1,s2)->
+        Integer.compare(s2.getValue().size(),s1.getValue().size()) // to compare between two number integer
+);
+for (Map.Entry<String,List<String>> s:sorted)
+{
+    System.out.println(s.getKey()+"  "+s.getValue());   
+}
+    
+}
+
+//////////////////////////////binary search
+
+public static int searchbinary(int []arr,int number)
+{
+    int left=0;
+    int  mid;
+    int right=arr.length-1;
+    while(left<=right)
+    {
+        mid=(left+right)/2;
+        if(arr[mid]==number)
+        {
+            return mid;
+        }
+        if(arr[mid]<number)
+        {
+            left=mid+1;
+        }
+        else
+        {
+            right=mid-1;
+        }
+    }
+    return-1;
+}
+
+
+
+
+
 ////////////////////Create helper methods:////////////////////
     public static void main(String[] args) {
         Scanner read=new Scanner(System.in);
@@ -339,15 +393,389 @@ public static int Divide(int a,int b)
 ///
 ///
 ///
-Student s1 = new Student(1, 90, 22, "Mohammad");
+//Student s1 = new Student(1, 90, 22, "Mohammad");
+//
+//Course c1 = new Course();
+//c1.title = "Java";
+//c1.code = "JAVA101";
+//
+//s1.enroll(c1);
+//Person p1=s1;
+//p1.printDetails();
+//////
+///
+///
+///
+///
+///
+///
+///
+//////////////////day 3///////////
+///
+///
+///
+///
+////////ArrayList and LinkedList/////////
+//ArrayList<Integer> array= new ArrayList<>();
+//LinkedList<Integer> linked= new LinkedList<>();
+//array.add(10);
+//array.add(20);
+//linked.add(40);
+//linked.add(50);
+//System.out.println(array);
+//System.out.println(linked);
+//array.add(0,30);
+//System.out.println(array);
+//for(int i=0;i<10000;i++)
+//{
+//    array.add(i);
+//    linked.add(i);
+//}
+//long start=System.nanoTime();
+//array.add(0,9999);
+//long end=System.nanoTime();
+//System.out.println("Arraylist Time is :"+ (end-start));
+///////////////
+/////
+/////
+//start=System.nanoTime();
+//linked.add(0,9999);
+//end=System.nanoTime();
+//System.out.println("LinkedList time is :"+ (end-start));
 
-Course c1 = new Course();
-c1.title = "Java";
-c1.code = "JAVA101";
+///
+///
+///
+///
+///
+///
+//////////Stack using Deque<Integer> with ArrayDeque/////////
+///
+///
+//Deque<Integer> stack= new ArrayDeque<>();/// Deque that mean double-end queue can controll from the start and end
+//stack.push(10);
+//stack.push(20);
+//stack.push(30);
+//System.out.println(stack.peek());// peek to look at top 
+//System.out.println(stack.pop());//pop to remove from the top
+//stack.push(40);
+//stack.push(50);
+//System.out.println("the top in stack is: " + stack.peek());
+//while(!stack.isEmpty())
+//{
+//    System.out.println(stack.pop());
+//}
 
-s1.enroll(c1);
-Person p1=s1;
-p1.printDetails();
+////////queue///
+///
+///
+///
+///
+//Queue<String> queue=new LinkedList<>();
+//queue.add("job1");
+//queue.add("job2");
+//queue.add("job3");
+//queue.add("job4");
+//queue.add("job5");
+//System.out.println("this is the first item: "+ queue.peek());////look the first item
+//System.out.println("to remove the first item: "+ queue.poll());
+//while(!queue.isEmpty())
+//{
+//    System.out.println("remove the first item: "+queue.poll());
+//}
+////////////
+///
+///
+///
+///
+///
+///
+///
+///
+///
+
+////////////Hashmap& list///
+///
+///
+///
+///
+///
+//HashMap<String,List<String>> student= new HashMap<>();
+//List<String> courseM= new ArrayList<>();
+//courseM.add("Java");
+//courseM.add("DB");
+//courseM.add("SQL");
+//List<String>courseA=new ArrayList<>();
+//courseA.add("python");
+//courseA.add("c++");
+//List<String>courseR=new ArrayList<>();
+//courseR.add("c#");
+//courseR.add("web");
+//courseR.add("c++2");
+//courseR.add("advance");
+//student.put("mohammad", courseM);
+//student.put("Ahmad", courseA);
+//student.put("rami", courseR);
+//System.out.println(student.get("mohammad"));
+//for (Map.Entry<String, List<String>> students : student.entrySet())
+//{
+//    System.out.println("Student: " + students.getKey());
+//    System.out.println("Courses: " + students.getValue());
+//    
+//}
+//System.out.println("------------------------------------------------------");
+////////////invoke method sorted
+///
+///
+//printSorted(student);
+
+/////////////////////////
+///
+///
+///
+///////////////////////////////////////////HashSet & List
+///
+///
+///
+//List<String> name = new ArrayList<>();
+//name.add("mohammad");
+//name.add("Ahmad");
+//name.add("khalid");
+//name.add("mohammad");
+//for(String s:name)
+//{
+//    System.out.println(s);
+//}
+//System.out.println("_____________________________________");
+//HashSet<String>uniqname= new HashSet<>(name);
+//System.out.println("HashSet with  uniqname = "+ uniqname);
+
+///
+///
+///
+///
+///////////////////////////TreeMap
+///
+///
+///
+///
+//TreeMap<String,Integer> product=new TreeMap<>();
+//product.put("Iphone",2000);
+//product.put("apple",20);
+//product.put("banana",25);
+//product.put("Samsung",2400);
+//for(Map.Entry<String,Integer> p: product.entrySet())
+//{
+//    System.out.println(p.getKey()+"  "+p.getValue());
+//}
+
+
+///
+///
+///
+///
+///
+///
+///
+///
+////////////////////frequency counter using hashmap
+///
+///
+///
+///
+///
+//String text = "java sql java python java sql";
+//String [] t1 = text.split(" ");
+//HashMap<String ,Integer> count= new  HashMap<>();
+//for(String  t : t1)
+//{
+//    if(!count.containsKey(t))
+//    {
+//        count.put(t,1);
+//    }
+//    else
+//    {
+//        count.put(t, count.get(t)+1);
+//    }
+//}
+//            System.out.println(count);
+//String text = "java sql java python java sql";
+//String [] word = text.split(" ");
+//HashMap  <String ,Integer> countWord= new HashMap<>();
+//for( String words :word)
+//{
+//    if(!countWord.containsKey(words))
+//    {
+//        countWord.put(words,1);
+//    }
+//    else
+//    {
+//        countWord.put(words,countWord.get(words)+1);
+//    }
+//}
+//            System.out.println(countWord);
+
+
+
+
+
+////////////////////////////////////////binary search method
+///
+///
+///
+///
+///
+//int[] number1={12,14,16,26,40,50};
+//System.out.println(searchbinary(number1,16));
+///
+///
+///
+///
+///
+///
+///
+/*
+Big-O Complexity
+
+ArrayList:
+get(index)       -> O(1)
+add(value)       -> O(1) usually when adding at the end
+add(index,value) -> O(n)
+remove(index)    -> O(n)
+
+LinkedList:
+get(index)       -> O(n)
+add(value)       -> O(1) when adding at the end
+remove first/last-> O(1)
+remove by value  -> O(n)
+
+HashMap:
+get(key)         -> O(1) average
+put(key,value)   -> O(1) average
+remove(key)      -> O(1) average
+
+TreeMap:
+get(key)         -> O(log n)
+put(key,value)   -> O(log n)
+remove(key)      -> O(log n)
+*/
+
+
+
+///
+///
+///
+///
+////////////////////mini   project inventory  using Product class
+///
+///
+///
+//
+HashMap<String,Product> inventory= new HashMap<>();
+Product p1=new Product("p001","iphone",3000);
+Product p2=new Product("p002","samsung",2000);
+inventory.put(p1.getCode(),p1);
+inventory.put(p2.getCode(), p2);
+System.out.println(inventory);
+while(true)
+{
+     System.out.println("========== Inventory Menu ==========");
+    System.out.println("1. Add Product");
+    System.out.println("2. Remove Product");
+    System.out.println("3. Search Product");
+    System.out.println("4. List Products");
+    System.out.println("5. Exit");
+    System.out.print("Choose option: ");
+    int choice =read.nextInt();
+     switch(choice)
+    {
+        case 1:
+            read.nextLine();
+            System.out.println("Enter product code");
+            String code=read.nextLine();
+            
+            System.out.println("Enter product name");
+            String name=read.nextLine();
+            
+            System.out.println("Enter product price");
+            double price=read.nextDouble();
+            
+            Product newproduct=new Product(code,name,price);
+            inventory.put(code, newproduct);
+
+    System.out.println("Product added successfully");
+            break;
+
+        case 2:
+            read.nextLine();
+            System.out.println("Enter Product code to Remove: ");
+            String removecode=read.nextLine();
+            
+            if(inventory.containsKey(removecode))
+            {
+                inventory.remove(removecode);
+                System.out.println("product removed successful");
+            }
+            else
+            {
+                System.out.println("Product not found");
+            }
+            break;
+
+        case 3:
+            read.nextLine();
+            System.out.println("Enter Product code to  Search:");
+            String searchcode = read.nextLine();
+             if(inventory.containsKey(searchcode))
+             {
+                  Product foundProduct = inventory.get(searchcode);
+                  System.out.println("Product found:");
+                  System.out.println(foundProduct);
+             }
+             else
+             {
+                 System.out.println("Product not found");
+             }
+            break;
+
+        case 4:
+            if(inventory.isEmpty())
+            {
+                System.out.println("Inventory is empty");
+            }
+   
+            else
+            {
+                for(Map.Entry<String, Product> item : inventory.entrySet())
+                {
+                    System.out.println(item.getValue());
+                }
+            }
+
+            break;
+
+        case 5:
+            System.out.println("Exit");
+            return;
+
+        default:
+            System.out.println("Invalid choice");
+    }
+    
+    
+}
+
+
+
+
+
+
+        
+
+
+
+
+
 
     }
 }

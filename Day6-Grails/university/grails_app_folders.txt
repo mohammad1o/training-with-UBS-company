@@ -1,0 +1,59 @@
+Grails App Folders Documentation
+
+1. domain
+Contains the domain classes of the application.
+Domain classes represent application data and are usually mapped to database tables using GORM.
+Example: Student, Course, Enrollment.
+
+2. controllers
+Contains controller classes.
+Controllers receive HTTP requests, execute the required action, communicate with services if needed, and return a response or a view.
+Example: HelloController.
+
+3. services
+Contains service classes.
+Services are used for business logic so that controllers remain simple and organized.
+Example: a service can handle student enrollment logic.
+
+4. views
+Contains the user interface pages of the application.
+Grails uses GSP (Groovy Server Pages) files for views.
+Example: views/hello/index.gsp.
+
+The layouts folder inside views contains shared page layouts.
+Example: views/layouts/main.gsp.
+
+5. conf
+Contains application configuration files.
+It includes settings such as database configuration, URL mappings, logging, and application settings.
+Example: application.yml.
+
+6. i18n
+Contains internationalization and translation files.
+It allows the application to support multiple languages.
+Example: messages.properties.
+
+7. init
+Contains application startup classes.
+Code in this folder runs when the Grails application starts.
+It can be used to initialize data or perform startup configuration.
+
+Request Flow Example:
+
+Browser Request
+    ->
+URL Mapping
+    ->
+Controller
+    ->
+Service
+    ->
+Domain
+    ->
+Database
+    ->
+Controller
+    ->
+View
+    ->
+Browser Response

@@ -1,0 +1,35 @@
+example 1 - variable
+ 
+java: 
+string name="mohammad";
+
+groovy :
+det name="mohammad"
+
+example 2 - integer
+
+java: 
+int age=22;
+
+groovy :
+def age =22
+
+example 3 - print 
+
+java: 
+system.out.println("hello");
+
+groovy :
+println("hello")
+
+example 4 - loop
+
+java:
+numbers.forEach(n -> System.out.println(n));
+
+groovy:
+numbers.each { n ->
+    println n
+}
+
+

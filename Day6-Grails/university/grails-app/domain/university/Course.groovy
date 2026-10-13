@@ -5,6 +5,7 @@ class Course
 String title
 String code
 Integer creditHours
+static hasMany=[enrollments:Enrollment]
 static constraints=
 {
      code unique:true

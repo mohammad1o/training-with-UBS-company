@@ -11,6 +11,12 @@
 
     <h1>Enrollments</h1>
 
+    <g:if test="${flash.message}">
+        <div class="alert alert-success">
+            ${flash.message}
+        </div>
+    </g:if>
+
     <g:link action="create" class="btn btn-primary mb-3">
         Create Enrollment
     </g:link>
@@ -22,6 +28,7 @@
             <th>Student</th>
             <th>Course</th>
             <th>Grade</th>
+            <th>Enrolled At</th>
             <th>Action</th>
         </tr>
         </thead>
@@ -32,8 +39,17 @@
 
             <tr>
                 <td>${enrollment.student.name}</td>
+
                 <td>${enrollment.course.title}</td>
+
                 <td>${enrollment.grade}</td>
+
+                <td>
+                    <g:formatDate
+                        date="${enrollment.enrolledAt}"
+                        format="dd-MM-yyyy"
+                    />
+                </td>
 
                 <td>
                     <g:link

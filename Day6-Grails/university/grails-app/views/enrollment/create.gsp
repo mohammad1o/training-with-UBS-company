@@ -17,10 +17,16 @@
         </div>
     </g:if>
 
+    <g:hasErrors bean="${enrollment}">
+        <div class="alert alert-danger">
+            Please fix the errors below.
+        </div>
+    </g:hasErrors>
+
     <g:form controller="enrollment" action="save" method="POST">
 
         <div class="mb-3">
-            <label>Student</label>
+            <label class="form-label">Student</label>
 
             <g:select
                 name="studentId"
@@ -30,10 +36,16 @@
                 class="form-select"
                 noSelection="['':'Select Student']"
             />
+
+            <g:fieldError
+                bean="${enrollment}"
+                field="student"
+                class="text-danger"
+            />
         </div>
 
         <div class="mb-3">
-            <label>Course</label>
+            <label class="form-label">Course</label>
 
             <g:select
                 name="courseId"
@@ -43,15 +55,27 @@
                 class="form-select"
                 noSelection="['':'Select Course']"
             />
+
+            <g:fieldError
+                bean="${enrollment}"
+                field="course"
+                class="text-danger"
+            />
         </div>
 
         <div class="mb-3">
-            <label>Grade</label>
+            <label class="form-label">Grade</label>
 
             <g:field
                 name="grade"
                 type="number"
                 class="form-control"
+            />
+
+            <g:fieldError
+                bean="${enrollment}"
+                field="grade"
+                class="text-danger"
             />
         </div>
 

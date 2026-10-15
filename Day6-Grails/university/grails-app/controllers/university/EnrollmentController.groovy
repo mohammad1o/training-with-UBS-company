@@ -1,14 +1,16 @@
 package university
-import grails.gorm.transactions.Transactional
-@Transactional
+
 class EnrollmentController
 {
+    EnrollmentService enrollmentService
+
     def index()
     {
         [
             enrollments: Enrollment.list()
         ]
     }
+
     def create()
     {
         [
@@ -16,41 +18,30 @@ class EnrollmentController
             courses: Course.list()
         ]
     }
+
     def save()
     {
-        def student = Student.get(params.studentId)
-        def course = Course.get(params.courseId)
+        Enrollment enrollment = enrollmentService.enroll(
+            params.long('studentId'),
+            params.long('courseId'),
+            params.int('grade')
+        )
 
-        def existingEnrollment = Enrollment.findByStudentAndCourse(student, course)
-        if (existingEnrollment)
-        {
-            flash.message = "Student is already enrolled in this course."
-            redirect(action: "create")
-            return
-        }
-
-
-        def enrollment = new Enrollment(student: student, course: course, grade: params.int('grade'))
-        if (enrollment.save(flush: true))
+        if (enrollment)
         {
             redirect(action: "index")
         }
         else
         {
-            render(view: "create", model: [enrollment: enrollment, students: Student.list(), courses: Course.list()])
+            flash.message = "Enrollment failed. Please check if the student and course exist, and that the student is not already enrolled in the course."
+            redirect(action: "create")
         }
     }
+
     def delete(Long id)
     {
-    
-      def enrollment = Enrollment.get(id)
-
-        if (enrollment)
-        {
-            enrollment.delete(flush: true)
-        }
+        enrollmentService.unenroll(id)
 
         redirect(action: "index")
     }
-
 }

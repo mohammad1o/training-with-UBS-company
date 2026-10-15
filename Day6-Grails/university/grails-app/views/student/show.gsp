@@ -31,6 +31,13 @@
                     <div class="alert alert-primary" role="alert"><i class="bi-info-circle"></i> ${flash.message}</div>
                 </g:if>
                 <f:display bean="student" listClass="container" listItemClass="row mb-3" labelClass="form-label col-sm-3 text-sm-end" valueClass="col-sm-9" />
+                <h2>Enrolled courses</h2>
+                <g:each in="${student.enrollments}" var="enrollment">
+                <p>
+                    ${enrollment.course.title}
+                    Grade: ${enrollment.grade}
+                </p>
+                </g:each>
                 <g:form resource="${this.student}" controller="${controllerName}" method="DELETE">
                     <fieldset class="bg-body-tertiary">
                         <g:link class="btn btn-outline-primary" action="edit" resource="${this.student}" controller="${controllerName}">

@@ -6,6 +6,7 @@ import static org.springframework.http.HttpStatus.*
 class StudentController {
 
     StudentService studentService
+    EnrollmentService enrollmentService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -27,7 +28,9 @@ class StudentController {
     }
 
     def show(Long id) {
-        respond studentService.get(id)
+        Student student = studentService.get(id)
+        double gpa = enrollmentService.calculateGPA(id)
+        respond student, model: [gpa: gpa]
     }
 
     def create() {
@@ -82,14 +85,13 @@ class StudentController {
         }
     }
 
-    def delete(Long id) {
+    def delete(Long id) 
+    {
         if (id == null) {
             notFound()
             return
         }
-
         studentService.delete(id)
-
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'student.label', default: 'Student'), id])
@@ -99,7 +101,8 @@ class StudentController {
         }
     }
 
-    protected void notFound() {
+    protected void notFound() 
+    {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.not.found.message', args: [message(code: 'student.label', default: 'Student'), params.id])
@@ -107,5 +110,10 @@ class StudentController {
             }
             '*'{ render status: NOT_FOUND }
         }
+    }
+    def testGpa(Long id)
+    {
+        double gpa = enrollmentService.calculateGPA(id)
+        render "Student ID: ${id}, GPA: ${gpa}"
     }
 }

@@ -1,7 +1,10 @@
 package university
+import grails.rest.Resource
+@Resource(uri = '/api/courses')
 
 class Course
 {
+static responseFormats = ['json', 'html']
 String title
 String code
 Integer creditHours

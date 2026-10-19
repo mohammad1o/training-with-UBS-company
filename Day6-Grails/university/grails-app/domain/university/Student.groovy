@@ -1,8 +1,8 @@
 package university
 
-import grails.rest.Resource
+//import grails.rest.Resource
 
-@Resource(uri = '/api/students')
+//@Resource(uri = '/api/students') // creates REST API endpoint for Student domain class aotumatically
 class Student {
 
     String name

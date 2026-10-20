@@ -38,7 +38,7 @@
             <div class="collapse navbar-collapse"
                  id="mainNavbar">
 
-                <ul class="navbar-nav ms-auto">
+                <ul class="navbar-nav ms-auto align-items-lg-center">
 
                     <li class="nav-item">
                         <g:link uri="/"
@@ -70,6 +70,30 @@
                             Enrollments
                         </g:link>
                     </li>
+
+                    <sec:ifLoggedIn>
+
+                        <li class="nav-item">
+                            <span class="nav-link text-light">
+                                Welcome,
+                                <sec:loggedInUserInfo field="username"/>
+                            </span>
+                        </li>
+
+                        <li class="nav-item ms-lg-2">
+                            <form action="${createLink(uri: '/logout')}"
+                                  method="POST"
+                                  class="d-inline">
+
+                                <button type="submit"
+                                        class="btn btn-outline-light btn-sm">
+                                    Logout
+                                </button>
+
+                            </form>
+                        </li>
+
+                    </sec:ifLoggedIn>
 
                 </ul>
 

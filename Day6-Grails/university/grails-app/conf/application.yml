@@ -152,6 +152,11 @@ grails:
             logout:
                 afterLogoutUrl: '/login/auth'
 
+            useBasicAuth: true
+
+            basic:
+                realmName: 'UBS API'
+
             userLookup:
                 userDomainClassName: 'university.User'
                 authorityJoinClassName: 'university.UserRole'
@@ -161,22 +166,11 @@ grails:
 
             controllerAnnotations:
                 staticRules:
+
                     - pattern: /
                       access: ['permitAll']
 
-                    - pattern: /error
-                      access: ['permitAll']
-
-                    - pattern: /index
-                      access: ['permitAll']
-
-                    - pattern: /index.gsp
-                      access: ['permitAll']
-
                     - pattern: /login/**
-                      access: ['permitAll']
-
-                    - pattern: /logout/**
                       access: ['permitAll']
 
                     - pattern: /assets/**
@@ -193,12 +187,19 @@ grails:
 
                     - pattern: /**/favicon.ico
                       access: ['permitAll']
+
+                    - pattern: /admin/**
+                      access: ['ROLE_ADMIN']
+
+                    - pattern: /api/**
+                      access: ['IS_AUTHENTICATED_FULLY']
 
                     - pattern: /**
                       access: ['ROLE_ADMIN', 'ROLE_USER']
 
             filterChain:
                 chainMap:
+
                     - pattern: /assets/**
                       filters: none
 
@@ -214,5 +215,8 @@ grails:
                     - pattern: /**/favicon.ico
                       filters: none
 
+                    - pattern: /api/**
+                      filters: JOINED_FILTERS,-exceptionTranslationFilter
+
                     - pattern: /**
-                      filters: JOINED_FILTERS
+                      filters: JOINED_FILTERS,-basicAuthenticationFilter,-basicExceptionTranslationFilter
